@@ -11,10 +11,12 @@ glob('../**/*.mp3', {}, function (err, files) {
         console.log(item)
         let arr = item.split('/')
         result.push({
-            name: arr[3],
-            artist: "专辑-" + arr[2],
+            name: arr[2],
+            artist: "专辑-" + arr[1],
             url: 'https://cdn.jsdelivr.net/gh/' + dd + item.slice(2),
+            cover: 'https://cdn.jsdelivr.net/gh/' + dd + '/cover.png',
         })
     })
-    fs.writeFileSync('./list.js', "var jay = " + JSON.stringify(result))
+    var mm = path.resolve(__dirname,'..') + '/list.js'
+    fs.writeFileSync(mm, "var jay = " + JSON.stringify(result))
 })
